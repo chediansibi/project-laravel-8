@@ -1,3 +1,0 @@
-<p>
-	xisojfidjvfhviojf
-</p>
