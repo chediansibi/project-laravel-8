@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<a class="btn btn-primary" href="{{ url ('/etudiants/create') }}">Ajouter etudiant</a>
+	<a class="btn btn-primary" href="">Ajouter etudiant</a>
     <table class="table">
   <thead>
     <tr>
