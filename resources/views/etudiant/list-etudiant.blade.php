@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <a class="btn btn-info">{{ count($etudiants) }} etudiants</a>
 	<a class="btn btn-primary" href="{{ url ('/etudiants/create') }}">Ajouter etudiant</a>
     <table class="table">
   <thead>
@@ -15,20 +16,20 @@
     </tr>
   </thead>
   <tbody>
+
+@foreach($etudiants as $item )
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <th scope="row">{{ $item->id }}</th>
+      <td>{{ $item->name }}</td>
+      <td>{{ $item->email }}</td>
+      <td>{{ $item->phone }}</td>
+      <td>{{ $item->adress }}</td>
       <td>
-      	<a class="btn btn-success btn-sm" href="">E</a>
+      	<a class="btn btn-success btn-sm" href="{{ url('/etudiants/'. $item->id .'/edit')}}">E</a>
       	<a class="btn btn-danger btn-sm" href="">X</a>
-
       </td>
-
-
     </tr>
+@endforeach
   </tbody>
 </table>
 </div>

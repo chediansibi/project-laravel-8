@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Etudiant;
 
 class EtudiantController extends Controller
 {
@@ -24,7 +25,9 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        return view('etudiant.etudiant');
+        $etudiants=Etudiant::all();
+        //dd($etudiants);
+        return view('etudiant.list-etudiant', compact('etudiants'));
     }
 
     /**
@@ -45,7 +48,13 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+        //dd($data);
+        
+        $etudiant= Etudiant::create($data);
+        if($etudiant){
+            return redirect('etudiants');
+        }
     }
 
     /**
@@ -67,7 +76,9 @@ class EtudiantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $etudiant=Etudiant::find($id);
+        //dd($etudiant);
+        return view('etudiant.edit', compact('etudiant'));
     }
 
     /**
@@ -79,7 +90,13 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=$request->all();
+        //dd($data);
+        $etudiant= Etudiant::find($id)->update($data);
+        if($etudiant){
+            return redirect('etudiants');
+        }
+        
     }
 
     /**
